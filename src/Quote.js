@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Movie from './Movie.js';
-//import QuotesJSON from './json/quotes.json';
 import { Table } from 'react-bootstrap'
+
+var data_request = require('./util.js').get_data;
 
 class Quote extends Component {
     constructor() {
@@ -28,41 +29,16 @@ class Quote extends Component {
      componentWillMount(){
          this.getQuoteData();
      }
-     /***
-      * Fetch data from json api. proxyurl is quite..
-      *
-      */
-     getData(request, x){
-         var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-         var _this = this;
-         fetch(proxyUrl + request)
-         .then(
-         function(response) {
-             if (response.status !== 200) {
-                 console.log('Looks like there was a problem. Status Code: ' +
-                 response.status);
-                 return;
-             }
-             var __this = _this;
-             // Examine the text in the response
-             response.json().then(function(data) {
-                 if(x==='q'){
-                     __this.setState({
-                         quotes:data
-                     });
-                     __this.sortQuotes();
-                 } else {
-
-                 }
-                 return data;
-             });
-         }).catch(function(err) {
-             console.log('Fetch Error :-S', err);
+     
+     gotData(data){
+         this.setState({
+             quotes:data
          });
      }
      getQuoteData(){
          var request = 'https://mediasignal-quotes.herokuapp.com/quotes';
-         var data = this.getData(request, 'q');
+
+         var data = data_request(request, this);
      }
     render() {
         var quotes = this.state.quotes;
