@@ -1,0 +1,38 @@
+[
+    {
+        "id":1,
+        "movie":1,
+        "score":10,
+        "content":"Enough is enough! I have had it with these motherf*cking snakes on this motherf*cking plane! Everybody strap in. I'm about to open some f*cking windows."
+    },
+    {
+        "id":2,
+        "movie":2,
+        "score":6.8,
+        "content":"Well, there's this passage I've got memorized — sort of fits the occasion. Ezekiel 25:17? 'The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who in the name of charity and goodwill shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know my name is the Lord when I lay my vengeance upon thee."
+    },
+    {
+        "id":3,
+        "movie":3,
+        "score":8.1,
+        "content":"Don't give me attitude, sir. See, you're assuming I won't shoot your sorry ass and everyone knows, when you make an assumption, you make an ass out of 'u' and 'umption."
+    },
+    {
+        "id":4,
+        "movie":2,
+        "score":9.2,
+        "content":"Nobody's gonna hurt anybody. We're all gonna be like three little Fonzies here. And what's Fonzie like? Come on Yolanda, what's Fonzie like?"
+    },
+    {
+        "id":5,
+        "movie":4,
+        "score":3.3,
+        "content":"Please! God dammit! I hate this hacker crap!"
+    },
+    {
+        "id":6,
+        "movie":5,
+        "score":5.7,
+        "content":"Now you've seen how bad things can get and how quick they can get that way. Well, they can get a whole lot worse. So we're not going to fight anymore! We're going to pull together and we're gonna find a way to get out of here! First, we're gonna seal off this pool—"
+    }
+]
