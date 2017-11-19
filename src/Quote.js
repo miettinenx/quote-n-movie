@@ -18,7 +18,6 @@ class Quote extends Component {
      */
      sortQuotes() {
          var sortQuotesArr = this.state.quotes;
-         console.log(sortQuotesArr);
          sortQuotesArr.sort(function(a, b){
              return b.score - a.score;
          });
@@ -26,11 +25,13 @@ class Quote extends Component {
              quotes:sortQuotesArr
          });
      }
-     //////////////
      componentWillMount(){
-          console.log('will', this.state.quotes);
          this.getQuoteData();
      }
+     /***
+      * Fetch data from json api. proxyurl is quite..
+      *
+      */
      getData(request, x){
          var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
          var _this = this;
@@ -46,11 +47,10 @@ class Quote extends Component {
              // Examine the text in the response
              response.json().then(function(data) {
                  if(x==='q'){
-                     console.log('qqq', data);
                      __this.setState({
                          quotes:data
                      });
-                     console.log('chucky', __this.state.quotes);
+                     __this.sortQuotes();
                  } else {
 
                  }
@@ -63,14 +63,8 @@ class Quote extends Component {
      getQuoteData(){
          var request = 'https://mediasignal-quotes.herokuapp.com/quotes';
          var data = this.getData(request, 'q');
-         //console.log('daa', data);
-         //console.log('daa', that.state.quotes);
-
      }
-     //////////////////
-
     render() {
-        console.log('render', this.state.quotes)
         var quotes = this.state.quotes;
         return (
             <Table striped bordered condensed hover>
@@ -90,7 +84,7 @@ class Quote extends Component {
                     </tr>
                 );
             })}
-        </Table>
+            </Table>
         );
     }
 }
