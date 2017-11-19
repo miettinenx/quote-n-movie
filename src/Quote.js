@@ -9,58 +9,69 @@ class Quote extends Component {
         this.state = {
           quotes: []
         };
-
+        //this.setState({quotes:this.props.quotes});
     }
     /**
      * Sorts quoteJSON to descending order
      * @param {Number} a
      * @param {Number} b
      */
-    sortQuotes() {
-        var sortQuotesArr = this.state.quotes;
-        console.log(sortQuotesArr);
-        sortQuotesArr.sort(function(a, b){
-            return b.score - a.score;
-        });
-    //    console.log(QuotesJSON);
-        this.setState({
-            quotes:sortQuotesArr
-        });
-    }
-    componentDidMount() {
-        this.getQuoteData();
-        ////////////////
-         //this.setState({quotes: QuotesJSON});
-    }
+     sortQuotes() {
+         var sortQuotesArr = this.state.quotes;
+         console.log(sortQuotesArr);
+         sortQuotesArr.sort(function(a, b){
+             return b.score - a.score;
+         });
+         this.setState({
+             quotes:sortQuotesArr
+         });
+     }
+     //////////////
+     componentWillMount(){
+          console.log('will', this.state.quotes);
+         this.getQuoteData();
+     }
+     getData(request, x){
+         var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+         var _this = this;
+         fetch(proxyUrl + request)
+         .then(
+         function(response) {
+             if (response.status !== 200) {
+                 console.log('Looks like there was a problem. Status Code: ' +
+                 response.status);
+                 return;
+             }
+             var __this = _this;
+             // Examine the text in the response
+             response.json().then(function(data) {
+                 if(x==='q'){
+                     console.log('qqq', data);
+                     __this.setState({
+                         quotes:data
+                     });
+                     console.log('chucky', __this.state.quotes);
+                 } else {
 
+                 }
+                 return data;
+             });
+         }).catch(function(err) {
+             console.log('Fetch Error :-S', err);
+         });
+     }
+     getQuoteData(){
+         var request = 'https://mediasignal-quotes.herokuapp.com/quotes';
+         var data = this.getData(request, 'q');
+         //console.log('daa', data);
+         //console.log('daa', that.state.quotes);
 
-    getQuoteData(){
-        var request = 'https://mediasignal-quotes.herokuapp.com/quotes';
-        ////////////////
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        var that = this;
-        fetch(proxyUrl + request)
-        .then(
-        function(response) {
-            if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' +
-                response.status);
-                return;
-            }
-            // Examine the text in the response
-            response.json().then(function(data) {
-                //console.log('daa', data);
-                that.setState({quotes: data});
-                that.sortQuotes();
-                //console.log('daa', that.state.quotes);
-            });
-        }).catch(function(err) {
-            console.log('Fetch Error :-S', err);
-        });
+     }
+     //////////////////
 
-    }
     render() {
-        let quotes = this.state.quotes;
+        console.log('render', this.state.quotes)
+        var quotes = this.state.quotes;
         return (
             <Table striped bordered condensed hover>
             <thead>
