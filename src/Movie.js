@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+var data_request = require('./util.js').get_data;
 
 class Movie extends Component {
     /**
@@ -16,8 +17,8 @@ class Movie extends Component {
 
     }
     /**
-    * Connects the movie title by quotes movie id number.
-    * Maps through JSON and sets state for title by  movieID.
+    * Connects the movie title and the quote by movie id.
+    * Maps through JSON and sets state for title.
     * If movieID and obj.id are the same, then obj.title is the movie name.
     * @param {Number} movieID
     * @param {Object} moviesJSON
@@ -36,34 +37,17 @@ class Movie extends Component {
             }
         });
     }
-    getData(request, x){
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        var _this = this;
-        fetch(proxyUrl + request)
-        .then(
-        function(response) {
-            if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' +
-                response.status);
-                return;
-            }
-            var __this = _this;
-            // Examine the text in the response
-            response.json().then(function(data) {
-                    __this.setState({
-                        movies:data
-                    });
-                    console.log('moviesss', __this.state.movies);
-                    __this.movie_n_Quote();
-                return data;
-            });
-        }).catch(function(err) {
-            console.log('Fetch Error :-S', err);
+    gotData(data){
+        this.setState({
+            movies:data
         });
+        this.movie_n_Quote();
     }
     getMovieData(){
+
         var request = 'https://mediasignal-quotes.herokuapp.com/movies';
-        var data = this.getData(request);
+        var data = data_request(request, this);
+        //var data = this.getData(request);
     }
 
     /**
