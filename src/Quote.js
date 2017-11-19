@@ -10,13 +10,13 @@ class Quote extends Component {
         this.state = {
           quotes: []
         };
-        //this.setState({quotes:this.props.quotes});
     }
     /**
      * Sorts quoteJSON to descending order
      * @param {Number} a
      * @param {Number} b
      */
+     // sorting quotes
      sortQuotes() {
          var sortQuotesArr = this.state.quotes;
          sortQuotesArr.sort(function(a, b){
@@ -29,16 +29,17 @@ class Quote extends Component {
      componentWillMount(){
          this.getQuoteData();
      }
-     
+     // when data is fetched then set the state for quotes and sort
      gotData(data){
          this.setState({
              quotes:data
          });
+         this.sortQuotes();
      }
+     // fetch data from util.js
      getQuoteData(){
          var request = 'https://mediasignal-quotes.herokuapp.com/quotes';
-
-         var data = data_request(request, this);
+         data_request(request, this);
      }
     render() {
         var quotes = this.state.quotes;

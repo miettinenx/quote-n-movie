@@ -28,7 +28,6 @@ class Movie extends Component {
         var moviesJSON = this.state.movies;
         var movieID = this.state.id;
         var that = this;
-        console.log('aa', moviesJSON);
         moviesJSON.map(function(obj){
             if(movieID===obj.id){
                 that.setState({
@@ -46,8 +45,7 @@ class Movie extends Component {
     getMovieData(){
 
         var request = 'https://mediasignal-quotes.herokuapp.com/movies';
-        var data = data_request(request, this);
-        //var data = this.getData(request);
+        data_request(request, this);
     }
 
     /**
