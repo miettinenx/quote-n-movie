@@ -1,3 +1,9 @@
+/***
+ * fetches data from json api
+ * @param request {String} url
+ * @param x {Object} Module
+ */
+
 var get_data = function(request, x){
     var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     fetch(proxyUrl + request)
