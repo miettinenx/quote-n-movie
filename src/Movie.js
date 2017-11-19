@@ -15,10 +15,9 @@ class Movie extends Component {
         };
     }
     /**
-     * Connects movie title by quotes movie id number.
-     * Maps throu JSON and set state for title by  movieID.
+     * Connects the movie title by quotes movie id number.
+     * Maps through JSON and sets state for title by  movieID.
      * If movieID and obj.id are the same, then obj.title is the movie name.
-     * Set state to title.
      * @param {Number} movieID
      * @param {Object} moviesJSON
      * @param {Object} obj
@@ -35,7 +34,7 @@ class Movie extends Component {
     }
     /**
      * Sets state value for id by prop.id which is movie id.
-     * Calls for movie_n_Quote function to set the title name right.
+     * Calls for the movie_n_Quote function to set the title name right.
      * @param {Number} props.id reference to movie id from Content module
      * @param {Number} state.id
      * @param {Number} movieID variable name for props.id

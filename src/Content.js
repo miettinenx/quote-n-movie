@@ -6,7 +6,6 @@ class Content extends Component {
     render() {
         return  (
             <div>
-                Famous Samuel L. Jacksons quotes in movies:
                 <Quote />
             </div>
         );
